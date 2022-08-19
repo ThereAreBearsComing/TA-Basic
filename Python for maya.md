@@ -115,4 +115,20 @@ for k,v in polyCubeDict.items():
     print("key":{}, "value": {}, format(k, v))
 
 ```
+# 判断
 
+```python
+# 布尔值 bool
+condition = true
+if condition:
+    print()
+elif condition_2:
+    print()
+else:
+    print()
+##condition 有 and, or
+##判断中一定是 ==
+
+#if 8 in polyCube ,判断在不在表内
+
+```
