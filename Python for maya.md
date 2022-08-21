@@ -132,3 +132,21 @@ else:
 #if 8 in polyCube ,判断在不在表内
 
 ```
+# 函数&类
+```python
+class Human():
+    def __init__(self, name, age=0, hight=0.0, weight=0.0, sex="boy"): #构造函数，初始化函数
+        self.name = name #成员变量，属性
+        self.age = age
+        self.height = height
+        self.weight = weight
+        self.sex = sex
+        
+    def info(self):
+    print("My name is {}, {} years old and I'm a {}". format(self.name, self.name, self.sex))
+    
+XiaoHong = Human("xiao hong", 18, 160, 90, "girl") #实力化
+## 执行
+XiaoHong.weight = 80 # 属性
+XiaoHong.info()      # 方法
+```
