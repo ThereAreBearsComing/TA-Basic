@@ -150,3 +150,26 @@ XiaoHong = Human("xiao hong", 18, 160, 90, "girl") #实力化
 XiaoHong.weight = 80 # 属性
 XiaoHong.info()      # 方法
 ```
+# 模块和标准库
+```python
+# 导入
+import class02  as c2# 文件名儿
+
+HM1 = class02.Human("LaoWang")
+class02.sayHello() #模块名(模块别名).函数名
+print(HM1.name)
+
+#从模块导入
+from class02 import sayHello
+
+sayHello #这个方法不用前缀模块名
+
+#常用标准库
+import math
+import os, sys ,json
+
+cwd = os.getcwd()
+print(cwd)
+os.startfile(r"C:\Sc........") #路径名
+
+```
