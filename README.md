@@ -43,7 +43,7 @@ print(mesh,pos)
 将打组 (Ctrl + G)后的几个物体合并，且改名为最后一个框选的物体。
 * 写的工具添加工具栏：选择全部代码，按住鼠标中键，拖动至右上角空位置，右键选择编辑。
 
-```Pyhon
+```Python
 import pymel.core as pm
 # 获取所有选择物体
 selList = pm.ls(sl =True)
