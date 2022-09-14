@@ -154,4 +154,80 @@ pm.showWindow(UI)
 ![image](https://user-images.githubusercontent.com/74708198/189909626-77393699-5f1b-4977-95bd-4d19d4cb363c.png)
 * 左为错误（被遮挡）， 右则正确。
 
+## UI常见控件
 
+```Python
+import pymel.core as pm
+#    Maya主窗口，访问（query），左边框（left edge）
+gLE = pm.window("MayaWindow", q = True, le = True ) #q = True来访问问，窗口，按钮等 
+UI = pm.window(
+    title = "hello",
+    le = gLE+300,
+    # sizeable = False, #无法调整大小
+    toolbox = True #简洁形界面
+    )
+    
+formL = pm.formLayout()
+   
+btA = pm.text(label="My first Window", h = 60)
+btB = pm.iconTextScrollList(
+    allowMultiSelection=True, 
+    append=(
+        'one', 'two', 'three', 
+        'four', 'five', 'six', 
+        'seven', 'eight', 'nine', 
+        'ten', 'eleven', 'twelve', 
+        'thirteen', 'fourteen', 'fifteen'
+        ), 
+        selectItem='six' 
+    )
+
+colLay = pm.columnLayout(bgc = (1.0, 0.5 , 0.5), adj = True, rs = 5)
+pm.textField(tx="input your value")
+pm.floatSlider()
+pm.checkBox(label="3")
+pm.setParent("..") #返回上一级，ie.跳出columnLayout。
+btC = pm.button(label="C", h = 50)
+
+#    我们之前声明得布局，edit编辑
+pm.formLayout(formL, e = True,
+    # 以窗口为参考位置来设置
+    attachForm =[
+        (btA, 'top', 5), (btA, 'left', 5), (btA, 'right', 5), 
+        (btB, 'left', 5), (btB, 'bottom', 5),
+        (colLay, 'right', 5),
+        (btC,'bottom', 5), (btC,'right', 5),
+        ],
+    # 以按钮为参考位置来设置   
+    attachControl =[
+        (btB, 'top', 5, btA),
+        (colLay, 'top', 5, btA),(colLay, 'left', 5, btB),
+        (btC, 'top', 5, colLay),(btC, 'left', 5, btB)
+    ]
+)
+    
+pm.showWindow(UI)
+
+```
+![image](https://user-images.githubusercontent.com/74708198/190212893-60ea7a7b-b9d4-48ce-b666-7a654d7212a3.png)
+
+```Python
+import pymel.core as pm
+
+pm.window( width=150 )
+# Result: ui.Window('window1') #
+pm.columnLayout( adjustableColumn=True )
+# Result: ui.ColumnLayout('window1|columnLayout71') #
+pm.radioCollection()
+# Result: ui.RadioCollection('window1|columnLayout71|radioCollection1') #
+pm.radioButton( label='One' )
+# Result: ui.RadioButton('window1|columnLayout71|radioButton1') #
+pm.radioButton( label='Two' )
+# Result: ui.RadioButton('window1|columnLayout71|radioButton2') #
+pm.radioButton( label='Three' )
+# Result: ui.RadioButton('window1|columnLayout71|radioButton3') #
+pm.radioButton( label='Four' )
+# Result: ui.RadioButton('window1|columnLayout71|radioButton4') #
+pm.showWindow()
+```
+![image](https://user-images.githubusercontent.com/74708198/190212956-d3578cda-d681-4dd4-9cbf-4fbb3da326e5.png)
