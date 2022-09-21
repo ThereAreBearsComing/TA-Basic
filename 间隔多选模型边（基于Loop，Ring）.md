@@ -29,7 +29,14 @@ intF = None
 
 def main():
     global radioCol,intF
+    try:
+        pm.deleteUI("SelectNETool5448943") #利用Maya赋予特有名字特性来关掉重复窗口
+    except:
+        print("Not Found UI!")
+
+
     UI = pm.window(
+        "SelectNETool5448943",
         title= "SelectN",
         toolbox = True 
         )
